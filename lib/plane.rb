@@ -4,11 +4,11 @@ class Plane
 		@flying = true
 	end
 
-	def flying
+	def takenoff
 		@flying = true
 	end
 
-	def not_flying
+	def landed
 		@flying = false
 	end
 end

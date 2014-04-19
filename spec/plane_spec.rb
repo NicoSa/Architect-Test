@@ -9,11 +9,11 @@ describe Plane do
   end
   
   it 'it flies after take off' do
-  	expect(plane.flying).to be_true
+  	expect(plane.takenoff).to be_true
   end
   
   it 'it doens´t fly after landing' do
-  	expect(plane.not_flying).to be_false
+  	expect(plane.landed).to be_false
   end
 
 end

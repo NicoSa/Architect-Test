@@ -9,7 +9,7 @@ class Airport
 
 	def land(plane)
 		if grounded_planes < 20
-			plane.not_flying
+			plane.landed
 			@planes << plane
 		else
 			raise "No more planes can land!"
@@ -17,7 +17,7 @@ class Airport
 	end
 
 	def takeoff(plane)
-		plane.flying
+		plane.takenoff
 		@planes.delete(plane)
 	end
 
