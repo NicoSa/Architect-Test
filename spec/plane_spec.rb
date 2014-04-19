@@ -1,8 +1,8 @@
 require 'plane'
 
-describe Airplane do
+describe Plane do
  
-  let(:plane) { Airplane.new }
+  let(:plane) { Plane.new }
   
   it 'has a flying status when created' do
   	expect(plane).to be_true
@@ -18,7 +18,7 @@ describe Airplane do
 
 end
 
-describe "The gand finale (last spec)" do
+describe "The grand finale (last spec)" do
 
   it 'all planes can land and all planes can take off' do
   end
