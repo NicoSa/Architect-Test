@@ -27,7 +27,7 @@ describe Airport do
 
     it 'a plane cannot land if the airport is full' do
       full_airport      
-      expect{airport.land(plane)}.to raise_error "No more planes can be parked!"
+      expect{airport.land(plane)}.to raise_error "No more planes can land!"
     end
 
     context 'weather conditions' do
