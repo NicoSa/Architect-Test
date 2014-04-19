@@ -8,12 +8,12 @@ describe Plane do
   	expect(plane).to be_true
   end
   
-  it 'can take off' do
-  	expect(plane.takeoff).to be_true
+  it 'it flies after take off' do
+  	expect(plane.flying).to be_true
   end
   
-  it 'changes its status to flying after taking of' do
-  	expect(plane.land).to be_false
+  it 'it doens´t fly after landing' do
+  	expect(plane.not_flying).to be_false
   end
 
 end

@@ -6,19 +6,19 @@ describe Airport do
   let(:plane) {Plane.new}
 
   def full_airport
-    20.times{airport.park(plane)}
+    20.times{airport.land(plane)}
   end
   
   context 'landing and takeoff' do
 
     it 'a plane can be parked after landing' do
-      airport.park(plane)
-      expect(airport.planes_at_airport).to eq 1
+      airport.land(plane)
+      expect(airport.grounded_planes).to eq 1
     end
     
     it 'a plane is not parked anymore after takeoff' do
       airport.takeoff(plane)
-      expect(airport.planes_at_airport).to eq 0
+      expect(airport.grounded_planes).to eq 0
     end
 
   end
@@ -27,7 +27,7 @@ describe Airport do
 
     it 'a plane cannot land if the airport is full' do
       full_airport      
-      expect{airport.park(plane)}.to raise_error "No more planes can be parked!"
+      expect{airport.land(plane)}.to raise_error "No more planes can be parked!"
     end
 
     context 'weather conditions' do

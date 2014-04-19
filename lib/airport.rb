@@ -1,25 +1,27 @@
 class Airport
 
-	attr_reader :planes, :capacity
+	attr_reader :planes
 
 	def initialize
 		@planes = []
 		@capacity = 20
 	end
 
-	def park(plane)
-		if planes_at_airport < 20
-		@planes << plane
+	def land(plane)
+		if grounded_planes < 20
+			plane.not_flying
+			@planes << plane
 		else
-		raise "No more planes can be parked!"
+			raise "No more planes can land!"
 		end
 	end
 
 	def takeoff(plane)
+		plane.flying
 		@planes.delete(plane)
 	end
 
-	def planes_at_airport
+	def grounded_planes
 		@planes.count
 	end
 
