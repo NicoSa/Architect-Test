@@ -3,6 +3,7 @@ require 'airport'
 describe Airport do
 
 include Weather
+include SuperNatural
 
   let(:airport) { Airport.new }
   let(:plane)   { Plane.new   }
@@ -15,6 +16,7 @@ include Weather
 
     before do
       airport.stub(:weather_generator).and_return("No Storm")
+      airport.stub(:dimensional_rift).and_return("Not Turbulence!")
     end
 
     it 'is parked after landing' do
@@ -38,6 +40,7 @@ include Weather
 
     before do
       airport.stub(:weather_generator).and_return("Storm")
+      airport.stub(:dimensional_rift).and_return("Not Turbulence!")
     end
 
     it 'can´t takeoff because there is a storm going on' do
@@ -49,5 +52,20 @@ include Weather
     end
 
   end
+
+  context 'SuperNatural entities' do
+
+    before do
+      airport.stub(:dimensional_rift).and_return("TURBULENCE!")
+    end
+
+
+    it "attack your Airport and destroy all planes!" do
+      18.times{airport.land(plane)}
+      expect(airport.grounded_planes_count).to eq 0
+    end
+
+  end
+
 
 end

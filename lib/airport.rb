@@ -1,8 +1,10 @@
 require_relative './weather'
+require_relative './supernatural'
 
 class Airport
 
 	include Weather 
+	include SuperNatural
 
 	attr_reader :planes
 
@@ -14,9 +16,20 @@ class Airport
 	def land(plane)
 		if weather_generator == "Storm"
 			return "There is a storm going on, you can´t land!"
+		elsif dimensional_rift == "TURBULENCE!"
+			dimensional_rift_opens
 		else
-			grounded_planes_count < 20 ? plane_lands_and_docks(plane) : "No more planes can land!"
+			land_plane_check_capacity(plane)
 		end
+	end
+
+	def land_plane_check_capacity(plane)
+		grounded_planes_count < 20 ? plane_lands_and_docks(plane) : "No more planes can land!"
+	end
+
+	def plane_lands_and_docks(plane)
+		plane.lands
+		@grounded_planes << plane
 	end
 
 	def takeoff(plane)
@@ -27,18 +40,13 @@ class Airport
 		end
 	end
 
-	def grounded_planes_count
-		@grounded_planes.count
-	end
-
-	def plane_lands_and_docks(plane)
-		plane.lands
-		@grounded_planes << plane
-	end
-
-	def plane_takesoff_and_leaves_airport(plane)
+    def plane_takesoff_and_leaves_airport(plane)
 		plane.takesoff
 		@grounded_planes.delete(plane)
+	end
+
+	def grounded_planes_count
+		@grounded_planes.count
 	end
 
 end
