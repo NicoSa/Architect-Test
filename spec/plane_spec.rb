@@ -1,20 +1,21 @@
-require 'airplane'
+require 'plane'
 
-describe Plane do
+describe Airplane do
  
-  let(:plane) { Plane.new }
+  let(:plane) { Airplane.new }
   
   it 'has a flying status when created' do
-  end
-  
-  it 'has a flying status when in the air' do
+  	expect(plane).to be_true
   end
   
   it 'can take off' do
+  	expect(plane.takeoff).to be_true
   end
   
   it 'changes its status to flying after taking of' do
+  	expect(plane.land).to be_false
   end
+
 end
 
 describe "The gand finale (last spec)" do
