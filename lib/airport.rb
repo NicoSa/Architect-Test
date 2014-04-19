@@ -3,26 +3,25 @@ class Airport
 	attr_reader :planes
 
 	def initialize
-		@planes = []
+		@grounded_planes = []
 		@capacity = 20
 	end
 
 	def land(plane)
-		if grounded_planes < 20
-			plane.landed
-			@planes << plane
-		else
-			raise "No more planes can land!"
-		end
+		grounded_planes < 20 ? plane_lands_and_docks(plane) : "No more planes can land!"
 	end
 
 	def takeoff(plane)
-		plane.takenoff
-		@planes.delete(plane)
+		plane.takesoff
+		@grounded_planes.delete(plane)
 	end
 
 	def grounded_planes
-		@planes.count
+		@grounded_planes.count
 	end
 
+	def plane_lands_and_docks(plane)
+		plane.lands
+		@grounded_planes << plane
+	end
 end
