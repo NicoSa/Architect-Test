@@ -2,6 +2,8 @@ require 'airport'
 
 describe Airport do
 
+include Weather
+
   let(:airport) { Airport.new }
   let(:plane)   { Plane.new   }
 
@@ -10,6 +12,10 @@ describe Airport do
   end
   
   context 'Airplane' do
+
+    before do
+      airport.stub(:weather_generator).and_return("No Storm")
+    end
 
     it 'is parked after landing' do
       airport.land(plane)
@@ -28,15 +34,20 @@ describe Airport do
 
   end
 
-  context 'weather conditions' do
+  context 'Airplane' do
 
-    it 'a plane cannot take off when there is a storm brewing' do
+    before do
+      airport.stub(:weather_generator).and_return("Storm")
+    end
+
+    it 'can´t takeoff because there is a storm going on' do
+      expect(airport.land(plane)).to eq "There is a storm going on, you can´t land!"
     end
       
-    it 'a plane cannot land in the middle of a storm' do
+    it 'can´t land because there is a storm going on' do
+      expect(airport.takeoff(plane)).to eq "There is a storm going on, you can´t take off!"
     end
 
   end
 
-  
 end

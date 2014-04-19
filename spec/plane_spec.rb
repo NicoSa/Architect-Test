@@ -4,23 +4,16 @@ describe Plane do
  
   let(:plane) { Plane.new }
   
-  it 'has a flying status when created' do
+  it 'has a flying status when created and is in the air' do
   	expect(plane).to be_true
   end
   
-  it 'it flies after take off' do
+  it 'flies after take off' do
   	expect(plane.takesoff).to be_true
   end
   
-  it 'it doens´t fly after landing' do
+  it 'doesn´t fly after landing' do
   	expect(plane.lands).to be_false
-  end
-
-end
-
-describe "The grand finale (last spec)" do
-
-  it 'all planes can land and all planes can take off' do
   end
 
 end
