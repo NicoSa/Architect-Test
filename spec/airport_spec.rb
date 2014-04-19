@@ -19,12 +19,12 @@ include Weather
 
     it 'is parked after landing' do
       airport.land(plane)
-      expect(airport.grounded_planes).to eq 1
+      expect(airport.grounded_planes_count).to eq 1
     end
     
     it 'is not parked after takeoff' do
       airport.takeoff(plane)
-      expect(airport.grounded_planes).to eq 0
+      expect(airport.grounded_planes_count).to eq 0
     end
 
     it 'cannot land if the airports capacity is reached' do
@@ -34,7 +34,7 @@ include Weather
 
   end
 
-  context 'Airplane' do
+  context 'Under Weather: Airplane' do
 
     before do
       airport.stub(:weather_generator).and_return("Storm")
