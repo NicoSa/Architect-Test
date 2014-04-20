@@ -1,6 +1,7 @@
 class Plane
 
-	def initialize
+	def initialize(name="RandomPlane")
+		@name = name
 		@flying = true
 	end
 
