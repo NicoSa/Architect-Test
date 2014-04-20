@@ -6,7 +6,7 @@ class Airport
 	include Weather 
 	include SuperNatural
 
-	attr_reader :planes
+	attr_reader :grounded_planes
 
 	def initialize
 		@grounded_planes = []
@@ -19,11 +19,11 @@ class Airport
 		elsif dimensional_rift == "TURBULENCE!"
 			dimensional_rift_opens
 		else
-			land_plane_check_capacity(plane)
+			check_airport_capacity(plane)
 		end
 	end
 
-	def land_plane_check_capacity(plane)
+	def check_airport_capacity(plane)
 		grounded_planes_count < 20 ? plane_lands_and_docks(plane) : "No more planes can land!"
 	end
 

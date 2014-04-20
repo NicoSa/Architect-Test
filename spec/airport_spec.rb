@@ -60,7 +60,7 @@ include SuperNatural
     end
 
 
-    it "attack your Airport and destroy all planes!" do
+    it "attack your Airport and take away your planes!" do
       18.times{airport.land(plane)}
       expect(airport.grounded_planes_count).to eq 0
     end
