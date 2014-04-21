@@ -38,11 +38,7 @@ class Airport
 	end
 
 	def takeoff(plane)
-		if weather_generator == "Storm"
-		 return "There is a storm going on, you can´t take off!"
-		else
-			plane_takesoff_and_leaves_airport(plane)
-		end
+		weather_generator == "Storm" ? "There is a storm going on, you can´t take off!" : plane_takesoff_and_leaves_airport(plane)
 	end
 
     def plane_takesoff_and_leaves_airport(plane)
