@@ -8,10 +8,6 @@ include SuperNatural
   let(:airport) { Airport.new }
   let(:plane)   { Plane.new   }
 
-  def full_airport
-    20.times{airport.land(plane)}
-  end
-  
   context 'Airplane' do
 
     before do
@@ -30,7 +26,7 @@ include SuperNatural
     end
 
     it 'cannot land if the airports capacity is reached' do
-      full_airport      
+      20.times{airport.land(plane)}
       expect(airport.land(plane)).to eq "No more planes can land!"
     end
 

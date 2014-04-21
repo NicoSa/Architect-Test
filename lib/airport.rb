@@ -8,7 +8,8 @@ class Airport
 
 	attr_reader :grounded_planes
 
-	def initialize
+	def initialize(name="FRA")
+		@name = name
 		@grounded_planes = []
 		@capacity = 20
 	end
@@ -24,15 +25,11 @@ class Airport
 	end
 
 	def check_airport_capacity(plane)
-		grounded_planes_count < 20 ? has_that_plane_landed_already?(plane) : "No more planes can land!"
+		grounded_planes_count < 20 ? has_this_plane_landed_already?(plane) : "No more planes can land!"
 	end
 
-	def has_that_plane_landed_already?(plane)
-		if @grounded_planes.include?(plane)
-			puts "This plane has already landed!"
-		else 
-			plane_lands_and_docks(plane)
-		end
+	def has_this_plane_landed_already?(plane)
+		@grounded_planes.include?(plane) ? "This plane has already landed! Stop fucking with me!" : plane_lands_and_docks(plane)
 	end
 
 	def plane_lands_and_docks(plane)
