@@ -30,6 +30,11 @@ include SuperNatural
       expect(airport.land(Plane.new)).to eq "No more planes can land!"
     end
 
+    it 'can´t land twice' do
+      airport.land(plane)
+      expect(airport.land(plane)).to eq "This plane has already landed! Stop fucking with me!"
+    end
+
   end
 
   context 'Under Weather: Airplane' do
