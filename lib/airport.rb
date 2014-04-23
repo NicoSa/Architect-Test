@@ -3,7 +3,7 @@ require_relative './supernatural'
 
 class Airport
 
-	include Weather 
+	include Weather
 	include SuperNatural
 
 	attr_reader :grounded_planes
@@ -24,10 +24,14 @@ class Airport
 		end
 	end
 
+	# you are asking a question but you actually do something inside!
+	# is 20 the capacity?
+	# do I have check the string that comes back all the time?
 	def check_airport_capacity(plane)
 		grounded_planes_count < 20 ? has_this_plane_landed_already?(plane) : "No more planes can land!"
 	end
 
+	# I can't see column 122 on my screen
 	def has_this_plane_landed_already?(plane)
 		@grounded_planes.include?(plane) ? "This plane has already landed! Stop fucking with me!" : plane_lands_and_docks(plane)
 	end

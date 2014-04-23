@@ -18,8 +18,9 @@ include SuperNatural
     it 'is parked after landing' do
       airport.land(plane)
       expect(airport.grounded_planes_count).to eq 1
+      expect(plane.flying?).to be_false
     end
-    
+
     it 'is not parked after takeoff' do
       airport.takeoff(plane)
       expect(airport.grounded_planes_count).to eq 0
@@ -47,7 +48,7 @@ include SuperNatural
     it 'can´t takeoff because there is a storm going on' do
       expect(airport.land(plane)).to eq "There is a storm going on, you can´t land!"
     end
-      
+
     it 'can´t land because there is a storm going on' do
       expect(airport.takeoff(plane)).to eq "There is a storm going on, you can´t take off!"
     end
