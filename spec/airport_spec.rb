@@ -33,7 +33,7 @@ include SuperNatural
 
     it 'can´t land twice without taking off in between' do
       airport.land(plane)
-      expect{airport.land(plane)}.to raise_error "This plane has already landed! Stop fucking with me!"
+      expect{airport.land(plane)}.to raise_error "This plane has already landed!"
     end
 
   end
