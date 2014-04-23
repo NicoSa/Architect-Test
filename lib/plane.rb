@@ -1,5 +1,7 @@
 class Plane
 
+	attr_reader :name, :flying
+
 	def initialize(name="A380")
 		@name = name
 		@flying = true
@@ -9,13 +11,12 @@ class Plane
 		@flying
 	end
 
-	def takesoff
+	def takeoff!
 		@flying = true
 	end
 
-	# lands sounds like a question rather than a command.
-	# how about just "land"
-	def lands
+	
+	def land!
 		@flying = false
 	end
 end

@@ -51,7 +51,7 @@ class Airport
 	end
 
 	def land_and_park(plane)
-		plane.lands
+		plane.land!
 		@planes_at_airport << plane
 	end
 
@@ -65,7 +65,7 @@ class Airport
 	end
 
     def plane_takesoff_and_leaves_airport(plane)
-		plane.takesoff
+		plane.takeoff!
 		@planes_at_airport.delete(plane)
 	end
 
