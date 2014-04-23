@@ -40,7 +40,7 @@ class Airport
 	end
 
 	def capacity_not_reached?
-		!grounded_planes_count < 20 
+		grounded_planes_count < 20 
 	end
 
 	# I can't see column 122 on my screen
@@ -48,7 +48,7 @@ class Airport
 		return plane_lands_and_docks(plane) if plane_doesnt_exist(plane)
 		raise "This plane has already landed! Stop fucking with me!"
 	end
-
+ 		 				
 	def plane_doesnt_exist(plane)
 		!@grounded_planes.include?(plane)
 	end
