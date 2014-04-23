@@ -42,11 +42,11 @@ class Airport
 	end
 
 	def check_identity_of(plane)
-		return land_and_park(plane) if plane_hasnt_landed_yet(plane)
+		return land_and_park(plane) if unique?(plane)
 		raise "This plane has already landed! Stop fucking with me!"
 	end
  		 				
-	def plane_hasnt_landed_yet(plane)
+	def unique?(plane)
 		!@grounded_planes.include?(plane)
 	end
 
