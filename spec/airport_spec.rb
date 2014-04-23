@@ -46,11 +46,13 @@ include SuperNatural
     end
 
     it 'can´t takeoff because there is a storm going on' do
-      expect(airport.land(plane)).to eq "There is a storm going on, you can´t land!"
+      expect(airport.land(plane)).to eq "There is a storm going on, you can´t take off or land!"
+
     end
 
     it 'can´t land because there is a storm going on' do
-      expect(airport.takeoff(plane)).to eq "There is a storm going on, you can´t take off!"
+      expect(airport.takeoff(plane)).to eq "There is a storm going on, you can´t take off or land!"
+
     end
 
   end

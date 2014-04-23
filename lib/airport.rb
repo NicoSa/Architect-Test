@@ -16,11 +16,11 @@ class Airport
 
 	def land(plane)
 		if weather_is_stormy?
-			return "There is a storm going on, you can´t land!"
+			return storm_warning
 		elsif supernatural_entities_attack?
 			dimensional_rift_opens
 		else
-			is_the_aiport_full?(plane)
+			request_landing_for(plane)
 		end
 	end
 
@@ -32,9 +32,7 @@ class Airport
 		dimensional_rift == "TURBULENCE!"
 	end
 	# you are asking a question but you actually do something inside!
-	# is 20 the capacity?
-	# do I have check the string that comes back all the time?
-	def is_the_aiport_full?(plane)
+	def request_landing_for(plane)
 		return has_this_plane_landed_already?(plane) if capacity_not_reached?
 		raise "No more planes can land!"
 	end
@@ -43,23 +41,27 @@ class Airport
 		grounded_planes_count < 20 
 	end
 
-	# I can't see column 122 on my screen
 	def has_this_plane_landed_already?(plane)
-		return plane_lands_and_docks(plane) if plane_doesnt_exist(plane)
+		return land_and_park(plane) if plane_hasnt_landed!(plane)
 		raise "This plane has already landed! Stop fucking with me!"
 	end
  		 				
-	def plane_doesnt_exist(plane)
+	def plane_hasnt_landed!(plane)
 		!@grounded_planes.include?(plane)
 	end
 
-	def plane_lands_and_docks(plane)
+	def land_and_park(plane)
 		plane.lands
 		@grounded_planes << plane
 	end
 
 	def takeoff(plane)
-		weather_generator == "Storm" ? "There is a storm going on, you can´t take off!" : plane_takesoff_and_leaves_airport(plane)
+		return storm_warning if weather_is_stormy?
+		plane_takesoff_and_leaves_airport(plane)
+	end
+
+	def storm_warning
+		"There is a storm going on, you can´t take off or land!"
 	end
 
     def plane_takesoff_and_leaves_airport(plane)

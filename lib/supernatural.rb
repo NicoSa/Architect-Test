@@ -2,7 +2,7 @@ module SuperNatural
 
 	def dimensional_rift
 		attack_indicator = rand(20)
-		if attack_indicator == 1 then "TURBULENCE!" end
+		return "TURBULENCE" if attack_indicator == 1
 	end
 
 	def dimensional_rift_opens
