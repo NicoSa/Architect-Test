@@ -28,7 +28,7 @@ include SuperNatural
 
     it 'cannot land if the airports capacity is reached' do
       20.times{airport.land(Plane.new)}
-      expect(airport.land(Plane.new)).to eq "No more planes can land!"
+      expect(airport.land(Plane.new)).to raise_error "No more planes can land!"
     end
 
     it 'can´t land twice without taking off in between' do
