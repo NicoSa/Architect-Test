@@ -31,9 +31,9 @@ class Airport
 	def supernatural_entities_attack?
 		dimensional_rift == "TURBULENCE!"
 	end
-	# you are asking a question but you actually do something inside!
+
 	def request_landing_for(plane)
-		return has_this_plane_landed_already?(plane) if capacity_not_reached?
+		return check_identity_of(plane) if capacity_not_reached?
 		raise "No more planes can land!"
 	end
 
@@ -41,12 +41,12 @@ class Airport
 		grounded_planes_count < 20 
 	end
 
-	def has_this_plane_landed_already?(plane)
-		return land_and_park(plane) if plane_hasnt_landed!(plane)
+	def check_identity_of(plane)
+		return land_and_park(plane) if plane_hasnt_landed_yet(plane)
 		raise "This plane has already landed! Stop fucking with me!"
 	end
  		 				
-	def plane_hasnt_landed!(plane)
+	def plane_hasnt_landed_yet(plane)
 		!@grounded_planes.include?(plane)
 	end
 
