@@ -2,7 +2,8 @@ module Weather
 
 	def weather_generator
 		weather_indicator = rand(10)
-		weather_indicator == 1 ? "Storm" : "No Storm"
+		return "Storm" if weather_indicator == 1
+		return "No Storm"
 	end
 			
 end

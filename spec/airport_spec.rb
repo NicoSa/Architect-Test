@@ -17,13 +17,13 @@ include SuperNatural
 
     it 'is parked after landing' do
       airport.land(plane)
-      expect(airport.grounded_planes_count).to eq 1
+      expect(airport.count_planes_at_airport).to eq 1
       expect(plane.flying?).to be_false
     end
 
     it 'is not parked after takeoff' do
       airport.takeoff(plane)
-      expect(airport.grounded_planes_count).to eq 0
+      expect(airport.count_planes_at_airport).to eq 0
     end
 
     it 'cannot land if the airports capacity is reached' do
@@ -66,7 +66,7 @@ include SuperNatural
 
     it "attack your Airport and take away your planes!" do
       18.times{airport.land(plane)}
-      expect(airport.grounded_planes_count).to eq 0
+      expect(airport.count_planes_at_airport).to eq 0
     end
 
   end

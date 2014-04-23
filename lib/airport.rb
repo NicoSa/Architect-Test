@@ -6,12 +6,12 @@ class Airport
 	include Weather
 	include SuperNatural
 
-	attr_reader :grounded_planes
+	attr_reader :planes_at_airport, :capacity, :name
 
-	def initialize(name="FRA")
+	def initialize(name="FRA", capacity = 20)
 		@name = name
-		@grounded_planes = []
-		@capacity = 20
+		@planes_at_airport = []
+		@capacity = capacity
 	end
 
 	def land(plane)
@@ -20,7 +20,7 @@ class Airport
 		elsif supernatural_entities_attack?
 			dimensional_rift_opens
 		else
-			request_landing_for(plane)
+			requests_landing_for(plane)
 		end
 	end
 
@@ -32,27 +32,27 @@ class Airport
 		dimensional_rift == "TURBULENCE!"
 	end
 
-	def request_landing_for(plane)
+	def requests_landing_for(plane)
 		return check_identity_of(plane) if capacity_not_reached?
 		raise "No more planes can land!"
 	end
 
 	def capacity_not_reached?
-		grounded_planes_count < 20 
+		count_planes_at_airport < @capacity
 	end
 
 	def check_identity_of(plane)
 		return land_and_park(plane) if unique?(plane)
-		raise "This plane has already landed! Stop fucking with me!"
+		raise "This plane has already landed!"
 	end
  		 				
 	def unique?(plane)
-		!@grounded_planes.include?(plane)
+		!@planes_at_airport.include?(plane)
 	end
 
 	def land_and_park(plane)
 		plane.lands
-		@grounded_planes << plane
+		@planes_at_airport << plane
 	end
 
 	def takeoff(plane)
@@ -66,11 +66,11 @@ class Airport
 
     def plane_takesoff_and_leaves_airport(plane)
 		plane.takesoff
-		@grounded_planes.delete(plane)
+		@planes_at_airport.delete(plane)
 	end
 
-	def grounded_planes_count
-		@grounded_planes.count
+	def count_planes_at_airport
+		@planes_at_airport.count
 	end
 
 end
