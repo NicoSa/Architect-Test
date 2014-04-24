@@ -15,13 +15,25 @@ class Airport
 	end
 
 	def land(plane)
-		if weather_is_stormy?
-			return storm_warning
-		elsif supernatural_entities_attack?
-			dimensional_rift_opens
-		else
-			requests_landing_for(plane)
-		end
+		# Guard clause
+		# whilst the ternary has been removed you've replaced it with a different syntax
+		# but the unerlying mess is the same
+		# also you lack consitency between raise and return sometimes you raise sometimes you return
+		#
+		# Have a read through theese blogs
+		#
+		# http://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html
+		# http://c2.com/cgi/wiki?GuardClause
+		#
+		# does this seem cleaner?
+
+		raise storm_warning if weather_is_stormy?
+		raise dimensional_rift_opens if supernatural_entities_attack?
+		raise "This plane has already landed!" unless unique?(plane)
+		raise "No more planes can land!" if capacity_not_reached?
+
+		#action
+		land_and_park(plane)
 	end
 
 	def weather_is_stormy?
@@ -32,20 +44,10 @@ class Airport
 		dimensional_rift == "TURBULENCE!"
 	end
 
-	def requests_landing_for(plane)
-		return check_identity_of(plane) if capacity_not_reached?
-		raise "No more planes can land!"
-	end
-
 	def capacity_not_reached?
 		count_planes_at_airport < @capacity
 	end
 
-	def check_identity_of(plane)
-		return land_and_park(plane) if unique?(plane)
-		raise "This plane has already landed!"
-	end
- 		 				
 	def unique?(plane)
 		!@planes_at_airport.include?(plane)
 	end
