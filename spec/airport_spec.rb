@@ -2,9 +2,6 @@ require 'airport'
 
 describe Airport do
 
-include Weather
-include SuperNatural
-
   let(:airport) { Airport.new }
   let(:plane)   { Plane.new   }
 
