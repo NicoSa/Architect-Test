@@ -46,12 +46,12 @@ include SuperNatural
     end
 
     it 'can´t takeoff because there is a storm going on' do
-      expect(airport.land(plane)).to eq "There is a storm going on, you can´t take off or land!"
+      expect{airport.land(plane)}.to raise_error "There is a storm going on, you can´t take off or land!"
 
     end
 
     it 'can´t land because there is a storm going on' do
-      expect(airport.takeoff(plane)).to eq "There is a storm going on, you can´t take off or land!"
+      expect{airport.takeoff(plane)}.to raise_error "There is a storm going on, you can´t take off or land!"
 
     end
 
@@ -60,12 +60,14 @@ include SuperNatural
   context 'SuperNatural entities' do
 
     before do
-      airport.stub(:dimensional_rift).and_return("TURBULENCE!")
+      airport.stub(:weather_generator).and_return("No Storm")
+      airport.stub(:dimensional_rift).and_return("No TURBULENCE!")
     end
 
 
     it "attack your Airport and take away your planes!" do
-      18.times{airport.land(plane)}
+      18.times{airport.land(Plane.new)}
+      airport.dimensional_rift_opens
       expect(airport.count_planes_at_airport).to eq 0
     end
 
