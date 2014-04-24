@@ -1,8 +1,8 @@
 module SuperNatural
 
-	def dimensional_rift
+	def supernatural_entities_attack?
 		attack_indicator = rand(20)
-		return "TURBULENCE" if attack_indicator == 1
+		return false if attack_indicator != 1
 	end
 
 	def dimensional_rift_opens
