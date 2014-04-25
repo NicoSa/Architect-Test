@@ -12,10 +12,16 @@ class Plane
 	end
 
 	def takeoff!
+		# raise "You are already flying!" if flying?
 		@flying = true
 	end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c4ff1f1a6008cbdc63f0bc25a9168261206d465e
 	def land!
+		# raise "You have already landed!" if landed?
 		@flying = false
 	end
 	
