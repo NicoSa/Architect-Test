@@ -1,6 +1,9 @@
 require 'airport'
+require 'helper_spec'
 
 describe Airport do
+
+  include SpecHelper
 
   let(:airport) { Airport.new }
   let(:plane)   { Plane.new   }
@@ -15,7 +18,7 @@ describe Airport do
     it 'is parked after landing' do
       airport.request_landing(plane)
       expect(airport.count_planes_at_airport).to eq 1
-      expect(plane.flying?).to be_false
+      expect(plane.flying?).to be_falsey
     end
 
     it 'is not parked after landing' do

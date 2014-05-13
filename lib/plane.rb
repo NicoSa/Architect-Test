@@ -1,28 +1,22 @@
 class Plane
 
-	attr_reader :name, :flying
+  attr_reader :name, :flying
 
-	def initialize(name="A380")
-		@name = name
-		@flying = true
-	end
+  def initialize(name="A380")
+    @name = name
+    @flying = true
+  end
 
-	def flying?
-		@flying
-	end
+  def flying?
+    @flying
+  end
 
-	def takeoff!
-		# raise "You are already flying!" if flying?
-		@flying = true
-	end
+  def takeoff!
+    @flying = true
+  end
 
-<<<<<<< HEAD
-=======
+  def land!
+    @flying = false
+  end
 
->>>>>>> c4ff1f1a6008cbdc63f0bc25a9168261206d465e
-	def land!
-		# raise "You have already landed!" if landed?
-		@flying = false
-	end
-	
 end

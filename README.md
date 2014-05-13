@@ -18,6 +18,7 @@ How to run it
 git clone git@github.com:NicoSa/Architect-Test.git
 cd Architect-Test
 irb
+require './Require_classes.rb'
 ```
 - You can play with the classes, create new planes, see what the weather is like. I also included a Supernatural module. Find out what it does by yourself!
 
