@@ -20,7 +20,9 @@ cd Architect-Test
 irb
 ```
 - You can play with the classes, create new planes, see what the weather is like. I also included a Supernatural module. Find out what it does by yourself!
+
 How to run test
+----
 ```sh
 cd Architect-Test
 rspec
